@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "outDir": "dist",
+    "target": "esnext",
+    "module": "esnext",
+    "resolveJsonModule": true,
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "lib": ["esnext", "esnext.asynciterable"],
+    "sourceMap": true
+  },
+  "exclude": ["node_modules"],
+  "include": ["src/**/*.ts"]
+}

@@ -1,0 +1,16 @@
+version: '3'
+services:
+  jenkins:
+    image: jenkinsci/blueocean:latest
+    ports:
+      - 8080:8080
+      - 50000:50000
+    volumes:
+      - ${JENKINS_HOME}:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
+  sonarqube:
+    image: sonarqube
+    ports:
+      - 9000:9000
+    volumes:
+      - ${SONAR_HOME}:/opt/sonarqube

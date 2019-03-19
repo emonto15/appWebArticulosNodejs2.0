@@ -1,0 +1,12 @@
+import * as express from 'express';
+import * as morgan from 'morgan';
+import * as compression from 'compression';
+import * as helmet  from 'helmet';
+import { router } from './routes/articles';
+const app = express();
+app.use(helmet());
+app.use(compression());
+app.use(morgan('dev'));
+app.use(router);
+const server = app.listen(3000, () => console.log('[SERVER] is up and running on 3000 ...'));
+export{ app, server };

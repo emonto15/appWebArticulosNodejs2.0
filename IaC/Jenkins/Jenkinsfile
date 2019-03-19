@@ -1,0 +1,18 @@
+pipeline {
+  agent {
+    docker {
+      image 'emonto15/node-terraform-packer:latest'
+    }
+  }
+  stages {
+    stage('Create Packer AMI') {
+      steps {
+        withCredentials(bindings: [
+                            usernamePassword(credentialsId: 'awsCred', passwordVariable: 'AWS_SECRET', usernameVariable: 'AWS_KEY')
+                            ]){
+            sh 'packer build -debug -var aws_access_key=${AWS_KEY} -var aws_secret_key=${AWS_SECRET} IaC/packer/packer.json'
+        }
+      }
+    }
+  }
+}
